@@ -1,0 +1,55 @@
+.home-hero {
+  display: flex;
+  align-items: center;
+}
+
+.home-hero-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.home-hero-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.home-hero-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.home-hero-btn:hover {
+  background-color: #f2f2f2;
+  color: #000000;
+}
+
+.home-hero-image {
+  max-width: 100%;
+  border-radius: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-restohub {
+    padding: 10px 20px !important;
+  }
+
+  .footer-restohub {
+    padding: 10px 20px !important;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .home-hero {
+    text-align: left;
+  }
+}

@@ -56,8 +56,11 @@ gem 'devise'
 # RoR framework for creating elegant backends for website administration. [https://github.com/activeadmin/activeadmin]
 gem 'activeadmin'
 
-# Theme for Active Admin based on Blaze CSS [https://github.com/blocknotes/activeadmin_blaze_theme]
-gem 'activeadmin_blaze_theme'
+# [https://github.com/cprodhomme/arctic_admin]
+gem 'arctic_admin'
+
+# Иконки, которые использует ArcticAdmin
+gem 'font-awesome-rails'
 
 group :development, :test do
   # [https://rubygems.org/gems/factory_bot_rails]

@@ -1,0 +1,30 @@
+<div class="home-hero row align-items-center min-vh-75">
+  <div class="col-md-6 mb-4 mb-md-0">
+    <h1 class="home-hero-title">
+      <%= t("pages.home.title", default: "Welcome to RestoHub") %>
+    </h1>
+
+    <p class="home-hero-text">
+      <%= t(
+            "pages.home.description",
+            default: "RestoHub is a modern food delivery and restaurant " \
+              "discovery platform. Explore a curated network of cafés " \
+              "and restaurants, browse menus in a few taps, build your " \
+              "favourite orders, and track deliveries in real time. " \
+              "Order for yourself or your friends, save go-to places " \
+              "to your personal list and enjoy a seamless experience " \
+              "from browsing to the last bite."
+          ) %>
+    </p>
+
+    <%= link_to t("pages.home.cta", default: "Start exploring restaurants"),
+                "#",
+                class: "btn btn-lg home-hero-btn" %>
+  </div>
+
+  <div class="col-md-6 d-flex justify-content-center">
+    <%= image_tag "restohub.png",
+                  alt: "RestoHub hero",
+                  class: "img-fluid rounded-4 shadow home-hero-image" %>
+  </div>
+</div>

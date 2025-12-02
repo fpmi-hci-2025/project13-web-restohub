@@ -1,14 +1,28 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "home/index"
+  # корень приложения
+  root 'home#index'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # Devise
+  devise_for :users
+  devise_scope :user do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
+  end
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # ActiveAdmin
+  ActiveAdmin.routes(self)
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Пример пользовательского профиля
+  get '/profile', to: 'users#profile', as: :user_profile
+
+  # Healthcheck
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
+  # Всё остальное заворачиваем в (:locale)
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
+    resources :articles
+    # здесь же потом добавишь остальные ресурсы (меню, блюда, заказы и т.п.)
+  end
 end

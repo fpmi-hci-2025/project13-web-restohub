@@ -1,0 +1,37 @@
+.navbar-restohub {
+  background-color: #bb5304;
+  padding: 12px 110px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand-restohub {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.navbar-brand-restohub:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar-restohub .btn-language {
+  background-color: #ffffff;
+  border: none;
+  color: #000;
+}
+
+.navbar-restohub .btn-language:hover {
+  background-color: #f4f4f4;
+}
+
+.navbar-restohub .btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar-restohub .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}

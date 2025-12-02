@@ -1,0 +1,38 @@
+<nav class="navbar navbar-restohub">
+  <div class="container-fluid d-flex justify-content-between align-items-center px-0">
+    <div class="d-flex align-items-center">
+      <%= link_to "RestoHub", root_path, class: "navbar-brand navbar-brand-restohub" %>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <div class="dropdown me-3">
+        <button class="btn btn-language dropdown-toggle"
+                type="button"
+                id="languageDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+          <%= t("pages.home.language_button", default: "English") %>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+          <li><%= link_to "English", url_for(locale: :en), class: "dropdown-item" %></li>
+          <li><%= link_to "Russian", url_for(locale: :ru), class: "dropdown-item" %></li>
+        </ul>
+      </div>
+
+      <% if user_signed_in? %>
+        <%= button_to t("pages.home.sign_out", default: "Sign out"),
+                      destroy_user_session_path,
+                      method: :delete,
+                      class: "btn btn-dark" %>
+      <% else %>
+        <%= link_to t("pages.home.sign_in", default: "Sign in"),
+                    new_user_session_path,
+                    class: "btn btn-dark me-2" %>
+
+        <%= link_to t("pages.home.sign_up", default: "Sign up"),
+                    new_user_registration_path,
+                    class: "btn btn-outline-light" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

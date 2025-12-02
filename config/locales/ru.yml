@@ -1,0 +1,10 @@
+ru:
+  pages:
+    home:
+      language_button: "English"
+      sign_in: "Войти"
+      sign_up: "Регистрация"
+      sign_out: "Выйти"
+      title: "Добро пожаловать в RestoHub"
+      description: "RestoHub — это современное приложение для поиска ресторанов и доставки еды..."
+      cta: "Начать изучать рестораны"
