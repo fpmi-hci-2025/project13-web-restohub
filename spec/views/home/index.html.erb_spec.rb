@@ -3,5 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe 'home/index.html.erb', type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    render
+  end
+
+  it 'renders home title' do
+    expect(rendered).to include(I18n.t('pages.home.title', default: 'Welcome to RestoHub'))
+  end
 end
