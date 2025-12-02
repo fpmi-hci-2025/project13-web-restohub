@@ -53,6 +53,9 @@ gem 'rails-i18n', '~> 7.0.0'
 # [https://github.com/heartcombo/devise]
 gem 'devise'
 
+# [https://github.com/RolifyCommunity/rolify]
+gem 'rolify'
+
 # RoR framework for creating elegant backends for website administration. [https://github.com/activeadmin/activeadmin]
 gem 'activeadmin'
 

@@ -2,6 +2,9 @@
 
 en:
   devise:
+    common:
+      email_tab: "Email"
+      phone_tab: "Phone"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -36,6 +39,11 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      title: "Forgot your password?"
+      email: "Email"
+      email_placeholder: "you@example.com"
+      submit: "Send me reset password instructions"
+      back_to_login: "Back to sign in"
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -45,10 +53,33 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address."
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
+      title: "Welcome to RestoHUB"
+      first_name: "First name"
+      last_name: "Last name"
+      nickname: "Nickname"
+      email: "Email"
+      phone: "Phone"
+      password: "Password"
+      password_confirmation: "Confirm password"
+      first_name_placeholder: "John"
+      last_name_placeholder: "Doe"
+      nickname_placeholder: "restohub_lover"
+      email_placeholder: "you@example.com"
+      phone_placeholder: "+375 29 123-45-67"
+      password_hint: "At least 8 characters, with one uppercase, one lowercase letter and one digit."
+      submit: "Create account"
+      already_have_account: "Already have an account?"
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      title: "Welcome to RestoHUB"
+      login_label: "Email / Nickname"
+      login_placeholder: "you@example.com / your_nickname"
+      password: "Password"
+      remember_me: "Remember me"
+      forgot: "Forgot password?"
+      submit: "Sign in"
+      no_account: "Don't have an account yet?"
+      sign_in_link: "Sign in"
+      sign_up_link: "Sign up"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

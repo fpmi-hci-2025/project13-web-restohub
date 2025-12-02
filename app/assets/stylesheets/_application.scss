@@ -1,13 +1,7 @@
-//@import "components/buttons";
-//@import "components/cards";
-//@import "components/dropdowns";
-//@import "components/pagination";
-//@import "components/text";
 @import "components/navbar";
 @import "components/footer";
 @import "components/home";
-//@import "devise/form_card";
-//@import "devise/devise_background";
+@import "components/devise";
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
