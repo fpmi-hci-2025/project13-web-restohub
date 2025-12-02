@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-
     devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   end
 

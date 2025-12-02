@@ -94,3 +94,8 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      invalid_name: "can contain only letters, spaces, apostrophes and dashes"
+      invalid_nickname_format: "can contain only letters, numbers and underscores"
+      invalid_phone_format: "can contain only digits, spaces, +, - and brackets"
+      weak_password: "must be at least 8 characters and include one uppercase letter, one lowercase letter and one digit"
+      nickname_reserved: "is reserved and cannot be used"

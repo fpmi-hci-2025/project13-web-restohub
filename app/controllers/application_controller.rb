@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   def authenticate_admin_user!
     authenticate_user!
 
-    unless current_user&.admin?
-      redirect_to root_path, flash: { alert: I18n.t('errors.messages.no_access') }
-    end
+    return if current_user&.admin?
+
+    redirect_to root_path, flash: { alert: I18n.t('errors.messages.no_access') }
   end
 end
