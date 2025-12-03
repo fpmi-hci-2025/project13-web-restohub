@@ -22,9 +22,24 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      menu.add label: 'Back to App', url: :root_path, html_options: { target: :blank }
-      admin.add_current_user_to_menu  menu
-      admin.add_logout_button_to_menu menu
+      menu.add(
+        id: :back_to_app,
+        label: proc { "<i class='fa-solid fa-backward-step'></i> Back to App".html_safe },
+        url: :root_path,
+        html_options: { target: :blank }
+      )
+
+      admin.add_current_user_to_menu(menu)
+
+      menu.add(
+        id: :logout,
+        label: proc { "<i class='fa-solid fa-arrow-right-from-bracket'></i> Выход".html_safe },
+        url: :destroy_user_session_path,
+        html_options: {
+          method: :delete,
+          data: { confirm: I18n.t('active_admin.logout_confirmation', default: 'Are you sure?') }
+        }
+      )
     end
   end
 end

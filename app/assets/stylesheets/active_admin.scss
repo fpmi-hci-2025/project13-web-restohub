@@ -1,52 +1,12 @@
-// ===== КАСТОМНЫЕ ПЕРЕМЕННЫЕ ДЛЯ АДМИНКИ =====
-$red: #B02B2C;
-$green: #00897B;
-$blue: #4bacfe;
-$black: #36393D;
-$grey: #76838f;
-$beige: #EADDCA;
+@import "active_admin/mixins/variables";
+@import "active_admin/mixins";
+@import "arctic_admin/base";
+@import "font-awesome";
 
-// flash
-$error: #dc4747 !default;
-$warning: #f2a654 !default;
-$success: #46be8a !default;
-$info: #57c7d4 !default;
-$flash-text-color: #fff !default;
-$flash-background-color: $grey !default;
-
-// status_tag
-$status-tag-text-color: #fff !default;
-$status-tag-background-color: #cacaca !default;
-$status-tag-background-valid-color: $success !default;
-$status-tag-background-error-color: $error !default;
-
-$border-color: $beige !default;
-
-// body
-$body-background: #eee !default;
-
-// header
-$header-border-color: #e6e6e6 !default;
-$header-background: $beige !default;
-
-// nav action
-$header-nav-action-hover-background: #f5f5f5 !default;
-$header-nav-action-active-background: #f0f0f0 !default;
-
-// sidebar
-$sidebar-border-color: $header-border-color !default;
-$sidebar-background: #fff !default;
-
-$sidebar-item-hover-background: #f0f0f0 !default;
-$sidebar-nested-item-hover-background: #e7e7e7 !default;
-
-// text
-$text-color: #5a5a5a !default;
-$text-color-important: #526069 !default;
-
-$primary-color: $beige !default;
-$link-primary-color: $primary-color !default;
-$button-primary-color: $primary-color !default;
+.header #utility_nav li a i {
+  margin-right: 6px;
+  font-size: 14px;
+}
 
 .header {
   #utility_nav {
@@ -59,7 +19,7 @@ $button-primary-color: $primary-color !default;
         &:before {
           font-family: "Font Awesome 6 Free";
           font-weight: 900;
-          content: "\f060"; // стрелка влево (fa-arrow-left)
+          content: "\f060";
           color: $text-color;
           position: absolute;
           right: 0;

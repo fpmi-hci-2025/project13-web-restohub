@@ -1,17 +1,29 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
+  menu label: proc { "<i class='fa-solid fa-person'></i> Users".html_safe }
   actions :all
-  permit_params :email, :password, :password_confirmation, :admin
+  permit_params :first_name, :last_name, :nickname, :email, :phone, :status,
+                :password, :password_confirmation, role_ids: []
 
   filter :email
-  filter :created_at
+  filter :first_name
+  filter :last_name
+  filter :nickname
+  filter :phone
+  filter :status
+  filter :roles
 
   index do
     selectable_column
     id_column
     column :email
-    column :admin
+    column :first_name
+    column :last_name
+    column :nickname
+    column :phone
+    column :status
+    column(:roles) { |user| user.roles.pluck(:name).join(', ') }
     column :created_at
     actions
   end
@@ -19,7 +31,12 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :email
-      row :admin
+      row :first_name
+      row :last_name
+      row :nickname
+      row :phone
+      row :status
+      row(:roles) { |user| user.roles.pluck(:name).join(', ') }
       row :created_at
       row :updated_at
     end
@@ -27,10 +44,15 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
+      f.input :first_name
+      f.input :last_name
+      f.input :nickname
       f.input :email
+      f.input :phone
+      f.input :status
+      f.input :roles, as: :check_boxes
       f.input :password
       f.input :password_confirmation
-      f.input :admin
     end
     f.actions
   end
@@ -38,8 +60,8 @@ ActiveAdmin.register User do
   controller do
     def update
       if params[:user][:password].blank?
-        params[:user].delete('password')
-        params[:user].delete('password_confirmation')
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
       end
 
       super

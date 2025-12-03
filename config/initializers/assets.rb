@@ -11,6 +11,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap
 Rails.application.config.assets.paths << Rails.root.join('node_modules/bootstrap/dist/js')
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
+Rails.application.config.assets.precompile += %w[active_admin.css active_admin.js]
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

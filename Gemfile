@@ -62,6 +62,8 @@ gem 'activeadmin'
 # [https://github.com/cprodhomme/arctic_admin]
 gem 'arctic_admin'
 
+gem 'sassc-rails'
+
 # Иконки, которые использует ArcticAdmin
 gem 'font-awesome-rails'
 

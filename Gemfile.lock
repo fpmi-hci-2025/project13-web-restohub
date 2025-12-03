@@ -523,6 +523,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   rubocop-rspec
   sass-rails
+  sassc-rails
   selenium-webdriver
   shoulda-matchers (~> 6.0)
   simplecov (~> 0.22.0)
