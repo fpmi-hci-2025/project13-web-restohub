@@ -1,6 +1,8 @@
 ru:
   navigation:
     restaurants: "Рестораны"
+    cart: "Корзина"
+
   pages:
     home:
       language_button: "English"
@@ -10,6 +12,7 @@ ru:
       title: "Добро пожаловать в RestoHub"
       description: "RestoHub — это современное приложение для поиска ресторанов и доставки еды..."
       cta: "Начать изучать рестораны"
+
   restaurants:
     index:
       title: "Рестораны"
@@ -38,3 +41,20 @@ ru:
       sushi: "Суши"
       burgers: "Бургеры"
       salads: "Салаты"
+
+  cart:
+    title: "Корзина"
+    empty: "Ваша корзина пуста."
+    empty_title: "Ваша корзина пуста"
+    empty_subtitle: "Добавьте блюда из меню ресторана"
+    empty_for_restaurant: "В корзине пока нет блюд из этого ресторана."
+    open_menu: "Открыть меню"
+    clear: "Очистить корзину"
+    total_label: "Итого"
+    total: "Итого: %{amount} BYN"
+    delivery_time: "Время доставки: %{time}"
+    next_step: "Перейти к оплате"
+    flash:
+      added: "Блюдо добавлено в корзину"
+      error: "Не удалось добавить блюдо в корзину"
+      cleared: "Корзина очищена"

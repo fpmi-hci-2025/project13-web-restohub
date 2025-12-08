@@ -4,9 +4,19 @@ Rails.application.routes.draw do
   root 'home#index'
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
+    devise_for :users,
+               controllers: {
+                 registrations: 'users/registrations',
+                 sessions: 'users/sessions'
+               }
 
     resources :restaurants, only: %i[index show]
+
+    resource :cart, only: :show do
+      post   :add_item
+      patch  :update_item
+      delete :clear_for_restaurant
+    end
   end
 
   ActiveAdmin.routes(self)

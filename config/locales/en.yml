@@ -1,6 +1,8 @@
 en:
   navigation:
     restaurants: "Restaurants"
+    cart: "Cart"
+
   pages:
     home:
       language_button: "English"
@@ -10,6 +12,7 @@ en:
       title: "Welcome to RestoHub"
       description: "RestoHub is a modern food delivery and restaurant discovery platform. Explore a curated network of cafés and restaurants, browse menus in a few taps, build your favourite orders, and track deliveries in real time. Order for yourself or your friends, save go-to places to your personal list and enjoy a seamless experience from browsing to the last bite."
       cta: "Start exploring restaurants"
+
   restaurants:
     index:
       title: "Restaurants"
@@ -38,3 +41,20 @@ en:
       sushi: "Sushi"
       burgers: "Burgers"
       salads: "Salads"
+
+  cart:
+    title: "Cart"
+    empty: "Your cart is empty."
+    empty_title: "Your cart is empty"
+    empty_subtitle: "Add dishes from the restaurant menu"
+    empty_for_restaurant: "There are no items for this restaurant yet."
+    open_menu: "Open menu"
+    clear: "Clear cart"
+    total_label: "Total"
+    total: "Total: %{amount} BYN"
+    delivery_time: "Delivery time: %{time}"
+    next_step: "Go to payment"
+    flash:
+      added: "Dish has been added to your cart"
+      error: "Couldn't add dish to cart"
+      cleared: "Cart has been cleared"

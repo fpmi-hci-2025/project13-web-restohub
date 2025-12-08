@@ -63,7 +63,11 @@
     <% else %>
       <div class="restaurant-menu-list">
         <% @dishes.each do |dish| %>
-          <div class="dish-card d-flex align-items-center mb-3 p-3 rounded-4">
+          <div class="dish-card d-flex align-items-center mb-3 p-3 rounded-4"
+               data-controller="dish-cart"
+               data-dish-cart-dish-id-value="<%= dish.id %>"
+               data-dish-cart-add-url-value="<%= add_item_cart_path(locale: I18n.locale) %>">
+
             <div class="dish-card-photo-wrapper me-3">
               <%= image_tag dish_photo_path(dish),
                             class: "dish-card-photo" %>
@@ -77,17 +81,17 @@
               </p>
             </div>
 
-            <div class="dish-card-actions d-flex align-items-center ms-3"
-                 data-controller="dish-cart">
-              <span class="dish-card-price me-3">
-                <%= t('restaurants.show.price_with_currency',
-                      price: number_with_precision(
-                        dish.price,
-                        precision: 2,
-                        strip_insignificant_zeros: true
-                      )) %>
-              </span>
+            <div class="dish-card-actions d-flex align-items-center ms-3">
+            <span class="dish-card-price me-3">
+              <%= t('restaurants.show.price_with_currency',
+                    price: number_with_precision(
+                      dish.price,
+                      precision: 2,
+                      strip_insignificant_zeros: true
+                    )) %>
+            </span>
 
+              <!-- Кнопка добавляет в корзину через Stimulus + fetch -->
               <button type="button"
                       class="btn btn-orange"
                       data-dish-cart-target="addButton"

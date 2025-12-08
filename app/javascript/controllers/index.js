@@ -2,3 +2,6 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
+
+import DishCartController from "./dish_cart_controller"
+application.register("dish-cart", DishCartController)

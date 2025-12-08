@@ -7,6 +7,9 @@ class Dish < ApplicationRecord
     attachable.variant :card, resize_to_fill: [96, 96]
   end
 
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
+
   scope :available, -> { where(is_available: true) }
 
   validates :name,  presence: true

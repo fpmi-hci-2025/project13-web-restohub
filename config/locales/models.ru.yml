@@ -3,6 +3,8 @@ ru:
     models:
       user: "Пользователь"
       restaurant: "Ресторан"
+      cart: "Корзина"
+      cart_item: "Позиция корзины"
 
     attributes:
       user:
@@ -27,3 +29,13 @@ ru:
         free_delivery: "Бесплатная доставка"
         delivery_price: "Стоимость доставки"
         photo: "Фотография"
+
+      cart:
+        status: "Статус"
+        subtotal: "Сумма заказа"
+        user: "Пользователь"
+
+      cart_item:
+        cart: "Корзина"
+        dish: "Блюдо"
+        quantity: "Количество"

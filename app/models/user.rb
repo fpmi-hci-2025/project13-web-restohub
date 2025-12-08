@@ -8,6 +8,8 @@ class User < ApplicationRecord
   include UserLogin
   include UserValidations
 
+  has_one :cart, dependent: :destroy
+
   enum :status, { active: 0, blocked: 1 }
 
   after_create :assign_default_role

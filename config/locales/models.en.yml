@@ -3,6 +3,8 @@ en:
     models:
       user: "User"
       restaurant: "Restaurant"
+      cart: "Cart"
+      cart_item: "Cart item"
 
     attributes:
       user:
@@ -27,3 +29,13 @@ en:
         free_delivery: "Free delivery"
         delivery_price: "Delivery price"
         photo: "Photo"
+
+      cart:
+        status: "Status"
+        subtotal: "Subtotal"
+        user: "User"
+
+      cart_item:
+        cart: "Cart"
+        dish: "Dish"
+        quantity: "Quantity"

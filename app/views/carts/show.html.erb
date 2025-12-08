@@ -1,0 +1,153 @@
+<div class="container py-4 text-white cart-page">
+  <div class="mb-3 d-flex justify-content-between align-items-center">
+<!--    <h2 class="mb-0 text-center flex-grow-1"><%#= t('cart.title') %></h2>-->
+
+    <div class="ms-auto">
+      <%= link_to t('restaurants.show.back'),
+                  restaurants_path(locale: I18n.locale),
+                  class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  </div>
+
+  <% if @restaurants.blank? %>
+    <div class="cart-empty-state d-flex flex-column align-items-center justify-content-center py-5">
+      <i class="bi bi-receipt cart-empty-icon mb-3"></i>
+
+      <p class="cart-empty-title text-white mb-2">
+        <%= t('cart.empty_title') %>
+      </p>
+
+      <p class="cart-empty-subtitle text-white-50 mb-0">
+        <%= t('cart.empty_subtitle') %>
+      </p>
+    </div>
+
+    <div class="cart-summary border-top pt-3 mt-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="fw-semibold"><%= t('cart.total_label') %></span>
+        <span class="fw-semibold">
+          <%= t('restaurants.show.price_with_currency',
+                price: number_with_precision(0,
+                                             precision: 2,
+                                             strip_insignificant_zeros: true)) %>
+        </span>
+      </div>
+
+      <div class="d-flex">
+        <button type="button"
+                class="btn btn-orange w-100"
+                disabled>
+          <%= t('cart.next_step') %>
+        </button>
+      </div>
+    </div>
+  <% else %>
+    <!-- КОРЗИНА С ТОВАРАМИ -->
+    <div class="cart-restaurants-tabs mb-3 d-flex flex-wrap gap-2">
+      <% @restaurants.each do |restaurant| %>
+        <% active = (@current_restaurant == restaurant) %>
+        <%= link_to restaurant.name,
+                    cart_path(locale: I18n.locale,
+                              restaurant_id: restaurant.id),
+                    class: "btn btn-sm #{active ? 'btn-light' : 'btn-outline-light'}" %>
+      <% end %>
+    </div>
+
+    <% if @current_restaurant %>
+      <h4 class="mb-3 text-center"><%= @current_restaurant.name %></h4>
+
+      <% if @items.blank? %>
+        <p class="text-muted"><%= t('cart.empty_for_restaurant') %></p>
+      <% else %>
+        <div class="mb-3 d-flex justify-content-between align-items-center">
+          <%= link_to t('cart.open_menu'),
+                      restaurant_path(@current_restaurant, locale: I18n.locale),
+                      class: "btn btn-outline-secondary btn-sm" %>
+
+          <%= button_to t('cart.clear'),
+                        clear_for_restaurant_cart_path(
+                          locale: I18n.locale,
+                          restaurant_id: @current_restaurant.id
+                        ),
+                        method: :delete,
+                        class: "btn btn-outline-danger btn-sm" %>
+        </div>
+
+        <div class="cart-items-list mb-4">
+          <% @items.each do |item| %>
+            <% dish = item.dish %>
+            <div class="cart-item-card d-flex align-items-center mb-3 p-3 rounded-4 bg-dark">
+              <div class="cart-item-photo-wrapper me-3">
+                <%= image_tag dish_photo_path(dish),
+                              class: "dish-card-photo" %>
+              </div>
+
+              <div class="flex-grow-1">
+                <h5 class="mb-1 cart-item-title"><%= dish.name %></h5>
+                <p class="mb-1 text-white-50">
+                  <%= t("restaurants.categories.#{dish.category.to_s.downcase}",
+                        default: dish.category) %>
+                </p>
+                <p class="mb-0 fw-semibold">
+                  <%= t('restaurants.show.price_with_currency',
+                        price: number_with_precision(dish.price,
+                                                     precision: 2,
+                                                     strip_insignificant_zeros: true)) %>
+                </p>
+              </div>
+
+              <div class="ms-3 d-flex align-items-center">
+                <%= button_to '-',
+                              update_item_cart_path(
+                                locale: I18n.locale,
+                                id: item.id,
+                                restaurant_id: @current_restaurant.id,
+                                quantity: item.quantity - 1
+                              ),
+                              method: :patch,
+                              class: "btn btn-outline-light btn-sm me-2" %>
+
+                <span class="cart-item-qty fw-semibold"><%= item.quantity %></span>
+
+                <%= button_to '+',
+                              update_item_cart_path(
+                                locale: I18n.locale,
+                                id: item.id,
+                                restaurant_id: @current_restaurant.id,
+                                quantity: item.quantity + 1
+                              ),
+                              method: :patch,
+                              class: "btn btn-outline-light btn-sm ms-2" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="cart-summary border-top pt-3">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="fw-semibold"><%= t('cart.total_label') %></span>
+            <span class="fw-semibold">
+              <%= t('restaurants.show.price_with_currency',
+                    price: number_with_precision(@subtotal,
+                                                 precision: 2,
+                                                 strip_insignificant_zeros: true)) %>
+            </span>
+          </div>
+
+          <p class="mb-3 text-white-50">
+            <%= t('cart.delivery_time',
+                  time: @current_restaurant.delivery_time_label || '-') %>
+          </p>
+
+          <div class="d-flex">
+            <button type="button"
+                    class="btn btn-orange w-100"
+                    disabled>
+              <%= t('cart.next_step') %>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
