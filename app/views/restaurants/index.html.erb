@@ -1,0 +1,66 @@
+<div class="restaurants-page container py-4 text-white">
+  <div class="d-flex justify-content-center mb-3">
+    <h1 class="mb-0 restaurants-title"><%= t('restaurants.index.title') %></h1>
+  </div>
+
+  <div class="restaurants-search mb-3">
+    <%= form_with url: restaurants_path, method: :get, local: true,
+                  class: "d-flex align-items-center gap-2" do |f| %>
+      <%= f.text_field :query,
+                       value: params[:query],
+                       class: "form-control restaurants-search-field",
+                       placeholder: t('restaurants.index.search_placeholder') %>
+      <%= f.submit t('restaurants.index.search_button'), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="restaurants-categories mb-4 d-flex flex-wrap gap-2">
+    <% @dish_categories.each do |cat| %>
+      <% active = (params[:category] == cat) %>
+      <%= link_to restaurants_path(locale: I18n.locale,
+                                   query: params[:query],
+                                   category: (active ? nil : cat)),
+                  class: "restaurant-category-pill #{'restaurant-category-pill-active' if active}" do %>
+        <%= t("restaurants.categories.#{cat.downcase}", default: cat) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @restaurants.blank? %>
+    <p class="text-muted"><%= t('restaurants.index.empty') %></p>
+  <% else %>
+    <% @restaurants.each do |restaurant| %>
+      <div class="restaurant-card card mb-3 bg-dark text-white border-0">
+        <div class="restaurant-card-photo-wrapper">
+          <%= image_tag restaurant_photo_path(restaurant),
+                        class: "restaurant-card-photo w-100" %>
+        </div>
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <h5 class="card-title mb-0 restaurant-card-title">
+              <%= link_to restaurant.name,
+                          restaurant_path(restaurant, locale: I18n.locale),
+                          class: "text-white text-decoration-none" %>
+            </h5>
+            <%= restaurant_rating_with_star(restaurant) %>
+          </div>
+
+          <p class="card-text text-white-50 mb-1">
+            <%= restaurant.delivery_time_label %>
+            <% if restaurant.delivery_time_label.present? && restaurant.delivery_price_label.present? %>
+              •
+            <% end %>
+            <%= restaurant.delivery_price_label %>
+          </p>
+
+          <p class="card-text text-white-50 mb-0">
+            <%= restaurant_categories_labels(restaurant) %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
+    <%= paginate @restaurants %>
+  <% end %>
+</div>

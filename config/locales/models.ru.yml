@@ -1,0 +1,29 @@
+ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+      restaurant: "Ресторан"
+
+    attributes:
+      user:
+        email: "Email"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        nickname: "Никнейм"
+        phone: "Телефон"
+        status: "Статус"
+        roles: "Роли"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+
+      restaurant:
+        name: "Название"
+        cuisine_type: "Тип кухни"
+        address: "Адрес"
+        rating: "Рейтинг"
+        partnership_status: "Статус партнёрства"
+        delivery_time_min: "Мин. время доставки"
+        delivery_time_max: "Макс. время доставки"
+        free_delivery: "Бесплатная доставка"
+        delivery_price: "Стоимость доставки"
+        photo: "Фотография"

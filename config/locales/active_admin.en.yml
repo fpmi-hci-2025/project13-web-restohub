@@ -1,0 +1,32 @@
+en:
+  active_admin:
+    dashboard: "Dashboard"
+    dashboard_welcome:
+      welcome: "Welcome to the RestoHub admin panel"
+      call_to_action: "Use the menu above to manage restaurants, users and other data."
+
+    menu:
+      back_to_app: "Back to app"
+      logout: "Logout"
+
+    logout_confirmation: "Are you sure you want to log out?"
+
+    users:
+      menu: "Users"
+      form:
+        basic_info: "Basic information"
+
+    restaurants:
+      menu: "Restaurants"
+      form:
+        basic_info: "Basic information"
+        delivery: "Delivery"
+        photo: "Restaurant photo"
+      hints:
+        rating: "Rating from 0 to 5"
+        photo: "Upload a restaurant image (cover/logo)"
+      related_dishes: "Dishes of this restaurant"
+      scopes:
+        active: "Active"
+        paused: "Paused"
+        terminated: "Terminated"

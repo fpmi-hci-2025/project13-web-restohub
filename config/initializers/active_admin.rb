@@ -24,7 +24,7 @@ ActiveAdmin.setup do |config|
     admin.build_menu :utility_navigation do |menu|
       menu.add(
         id: :back_to_app,
-        label: proc { "<i class='fa-solid fa-backward-step'></i> Back to App".html_safe },
+        label: proc { "<i class='fa-solid fa-backward-step'></i> #{I18n.t('active_admin.menu.back_to_app')}".html_safe },
         url: :root_path,
         html_options: { target: :blank }
       )
@@ -33,7 +33,7 @@ ActiveAdmin.setup do |config|
 
       menu.add(
         id: :logout,
-        label: proc { "<i class='fa-solid fa-arrow-right-from-bracket'></i> Выход".html_safe },
+        label: proc { "<i class='fa-solid fa-arrow-right-from-bracket'></i> #{I18n.t('active_admin.menu.logout')}".html_safe },
         url: :destroy_user_session_path,
         html_options: {
           method: :delete,

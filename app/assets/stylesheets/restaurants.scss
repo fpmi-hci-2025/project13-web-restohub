@@ -1,0 +1,133 @@
+.restaurants-page {
+  background-color: #000;
+}
+
+.restaurants-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display",
+  "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.restaurants-search-field {
+  border-radius: 999px;
+}
+
+.restaurants-category-chip {
+  border-radius: 999px;
+  padding-inline: 18px;
+  padding-block: 6px;
+  font-size: 0.9rem;
+}
+
+.restaurants-category-chip.chip-active {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.restaurants-category-chip.chip-inactive {
+  background-color: transparent;
+  color: #cccccc;
+  border: 1px solid #444;
+}
+
+.restaurant-card {
+  background-color: #111111;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.restaurant-card-photo-wrapper {
+  height: 180px;
+  overflow: hidden;
+}
+
+.restaurant-card-photo {
+  object-fit: cover;
+}
+
+.restaurant-card-body {
+  padding: 16px 18px 14px;
+  color: #ffffff;
+}
+
+.restaurant-card-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display",
+  "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.restaurant-card-title-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.restaurant-card-title-link:hover {
+  text-decoration: underline;
+}
+
+.restaurant-card-meta {
+  font-size: 0.9rem;
+  color: #c0c0c0;
+}
+
+.restaurant-card-categories {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+.restaurant-rating {
+  font-size: 0.95rem;
+}
+
+.restaurant-rating-star {
+  font-size: 0.95rem;
+  color: #ffc107;
+}
+
+.restaurants-page {
+  color: #fff;
+}
+
+.restaurants-title {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.restaurant-card-title {
+  font-weight: 600;
+}
+
+/* Оранжевые pill-кнопки под поиском */
+.restaurant-category-pill {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #ff8a1f;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.restaurant-category-pill:hover {
+  background-color: #ff8a1f;
+  color: #ffffff;
+}
+
+.restaurant-category-pill-active {
+  background-color: #ff8a1f;
+  color: #ffffff;
+}
+
+.restaurant-card {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.restaurant-card-photo {
+  object-fit: cover;
+  max-height: 260px;
+}

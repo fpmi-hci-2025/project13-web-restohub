@@ -1,4 +1,6 @@
 en:
+  navigation:
+    restaurants: "Restaurants"
   pages:
     home:
       language_button: "English"
@@ -8,3 +10,21 @@ en:
       title: "Welcome to RestoHub"
       description: "RestoHub is a modern food delivery and restaurant discovery platform. Explore a curated network of cafés and restaurants, browse menus in a few taps, build your favourite orders, and track deliveries in real time. Order for yourself or your friends, save go-to places to your personal list and enjoy a seamless experience from browsing to the last bite."
       cta: "Start exploring restaurants"
+  restaurants:
+    index:
+      title: "Restaurants"
+      search_placeholder: "Search dishes and restaurants"
+      search_button: "Search"
+      empty: "No restaurants found"
+    show:
+      back: "Back to restaurants"
+      address: "Address"
+    delivery:
+      minutes: "min"
+      free: "Delivery: Free"
+      paid: "Delivery: %{price}"
+    categories:
+      pizza: "Pizza"
+      sushi: "Sushi"
+      burgers: "Burgers"
+      salads: "Salads"

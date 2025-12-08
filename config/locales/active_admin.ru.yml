@@ -1,0 +1,32 @@
+ru:
+  active_admin:
+    dashboard: "Панель администратора"
+    dashboard_welcome:
+      welcome: "Добро пожаловать в панель администратора RestoHub"
+      call_to_action: "Используйте меню сверху для управления ресторанами, пользователями и другими данными."
+
+    menu:
+      back_to_app: "Назад к приложению"
+      logout: "Выход"
+
+    logout_confirmation: "Вы уверены, что хотите выйти?"
+
+    users:
+      menu: "Пользователи"
+      form:
+        basic_info: "Основная информация"
+
+    restaurants:
+      menu: "Рестораны"
+      form:
+        basic_info: "Основная информация"
+        delivery: "Доставка"
+        photo: "Фотография ресторана"
+      hints:
+        rating: "Оценка от 0 до 5"
+        photo: "Загрузите изображение ресторана (обложка/логотип)"
+      related_dishes: "Блюда этого ресторана"
+      scopes:
+        active: "Активные"
+        paused: "На паузе"
+        terminated: "Прекращены"

@@ -1,0 +1,29 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+      restaurant: "Restaurant"
+
+    attributes:
+      user:
+        email: "Email"
+        first_name: "First name"
+        last_name: "Last name"
+        nickname: "Nickname"
+        phone: "Phone"
+        status: "Status"
+        roles: "Roles"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+
+      restaurant:
+        name: "Name"
+        cuisine_type: "Cuisine type"
+        address: "Address"
+        rating: "Rating"
+        partnership_status: "Partnership status"
+        delivery_time_min: "Min delivery time"
+        delivery_time_max: "Max delivery time"
+        free_delivery: "Free delivery"
+        delivery_price: "Delivery price"
+        photo: "Photo"

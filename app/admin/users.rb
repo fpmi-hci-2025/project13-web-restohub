@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
-  menu label: proc { "<i class='fa-solid fa-person'></i> Users".html_safe }
+  menu label: proc { "<i class='fa-solid fa-person'></i> #{I18n.t('active_admin.users.menu')}".html_safe }
+
   actions :all
+
   permit_params :first_name, :last_name, :nickname, :email, :phone, :status,
                 :password, :password_confirmation, role_ids: []
 
@@ -43,7 +45,7 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs do
+    f.inputs I18n.t('active_admin.users.form.basic_info') do
       f.input :first_name
       f.input :last_name
       f.input :nickname
@@ -54,6 +56,7 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
     end
+
     f.actions
   end
 
