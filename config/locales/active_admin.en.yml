@@ -3,7 +3,7 @@ en:
     dashboard: "Dashboard"
     dashboard_welcome:
       welcome: "Welcome to the RestoHub admin panel"
-      call_to_action: "Use the menu above to manage restaurants, users and other data."
+      call_to_action: "Use the menu above to manage restaurants, dishes, users and other data."
 
     menu:
       back_to_app: "Back to app"
@@ -30,3 +30,9 @@ en:
         active: "Active"
         paused: "Paused"
         terminated: "Terminated"
+
+    dishes:
+      menu: "Dishes"
+      form:
+        basic_info: "Dish"
+        photo: "Dish photo"

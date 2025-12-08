@@ -2,9 +2,19 @@
 
 module RestaurantsHelper
   def restaurant_photo_path(restaurant)
-    return restaurant.photo.variant(:card) if restaurant.photo.attached?
+    if restaurant.photo.attached?
+      restaurant.photo.variant(:card)
+    else
+      'restaurant_placeholder.jpg'
+    end
+  end
 
-    nil
+  def dish_photo_path(dish)
+    if dish.photo.attached?
+      dish.photo.variant(:card)
+    else
+      'dish_placeholder.jpg'
+    end
   end
 
   def restaurant_categories_labels(restaurant)

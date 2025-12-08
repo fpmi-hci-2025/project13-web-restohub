@@ -18,6 +18,17 @@ ru:
       empty: "Рестораны не найдены"
     show:
       back: "Назад к ресторанам"
+      menu_title: "Меню"
+      all_dishes: "Все"
+      empty_menu: "В этом ресторане пока нет блюд."
+      add_to_cart: "В корзину"
+      price_with_currency: "%{price} BYN"
+      active_admin:
+        dishes:
+          menu: "Блюда"
+          form:
+            basic_info: "Блюдо"
+            photo: "Фотография"
     delivery:
       minutes: "мин"
       free: "Дост.: Бесплатно"

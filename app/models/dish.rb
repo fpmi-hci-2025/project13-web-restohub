@@ -3,6 +3,10 @@
 class Dish < ApplicationRecord
   belongs_to :restaurant
 
+  has_one_attached :photo do |attachable|
+    attachable.variant :card, resize_to_fill: [96, 96]
+  end
+
   scope :available, -> { where(is_available: true) }
 
   validates :name,  presence: true

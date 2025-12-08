@@ -1,17 +1,14 @@
 <div class="container py-4 restaurant-show-page text-white">
   <div class="mb-3">
-    <%= link_to t('restaurants.show.back'), restaurants_path(locale: I18n.locale),
+    <%= link_to t('restaurants.show.back'),
+                restaurants_path(locale: I18n.locale),
                 class: "btn btn-outline-secondary btn-sm" %>
   </div>
 
   <div class="restaurant-card card bg-dark text-white border-0 mb-3">
     <div class="restaurant-card-photo-wrapper">
-      <% photo = restaurant_photo_path(@restaurant) %>
-      <% if photo.present? %>
-        <%= image_tag photo, class: "restaurant-card-photo w-100" %>
-      <% else %>
-        <div class="restaurant-card-photo-placeholder w-100"></div>
-      <% end %>
+      <%= image_tag restaurant_photo_path(@restaurant),
+                    class: "restaurant-card-photo w-100" %>
     </div>
 
     <div class="card-body restaurant-card-body">
@@ -34,5 +31,85 @@
         <%= restaurant_categories_labels(@restaurant) %>
       </p>
     </div>
+  </div>
+
+  <div class="restaurant-menu mt-4">
+    <h3 class="restaurant-menu-title mb-3">
+      <%= t('restaurants.show.menu_title') %>
+    </h3>
+
+    <% if @dish_categories.any? %>
+      <div class="restaurant-menu-categories mb-3 d-flex flex-wrap gap-2">
+        <% all_active = @current_dish_category.blank? %>
+        <%= link_to restaurant_path(@restaurant, locale: I18n.locale),
+                    class: "restaurant-category-pill #{'restaurant-category-pill-active' if all_active}" do %>
+          <%= t('restaurants.show.all_dishes') %>
+        <% end %>
+
+        <% @dish_categories.each do |cat| %>
+          <% active = (@current_dish_category == cat) %>
+          <%= link_to restaurant_path(@restaurant,
+                                      locale: I18n.locale,
+                                      dish_category: (active ? nil : cat)),
+                      class: "restaurant-category-pill #{'restaurant-category-pill-active' if active}" do %>
+            <%= t("restaurants.categories.#{cat.downcase}", default: cat) %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @dishes.blank? %>
+      <p class="text-muted"><%= t('restaurants.show.empty_menu') %></p>
+    <% else %>
+      <div class="restaurant-menu-list">
+        <% @dishes.each do |dish| %>
+          <div class="dish-card d-flex align-items-center mb-3 p-3 rounded-4">
+            <div class="dish-card-photo-wrapper me-3">
+              <%= image_tag dish_photo_path(dish),
+                            class: "dish-card-photo" %>
+            </div>
+
+            <div class="flex-grow-1">
+              <h5 class="mb-1 dish-card-title"><%= dish.name %></h5>
+              <p class="mb-0 dish-card-meta text-white-50">
+                <%= t("restaurants.categories.#{dish.category.to_s.downcase}",
+                      default: dish.category) %>
+              </p>
+            </div>
+
+            <div class="dish-card-actions d-flex align-items-center ms-3"
+                 data-controller="dish-cart">
+              <span class="dish-card-price me-3">
+                <%= t('restaurants.show.price_with_currency',
+                      price: number_with_precision(
+                        dish.price,
+                        precision: 2,
+                        strip_insignificant_zeros: true
+                      )) %>
+              </span>
+
+              <button type="button"
+                      class="btn btn-orange"
+                      data-dish-cart-target="addButton"
+                      data-action="click->dish-cart#add">
+                <%= t('restaurants.show.add_to_cart') %>
+              </button>
+
+              <div class="dish-cart-qty d-none align-items-center ms-3"
+                   data-dish-cart-target="counter">
+                <button type="button"
+                        class="btn btn-outline-light btn-sm me-2"
+                        data-action="click->dish-cart#decrement">-</button>
+                <span class="dish-cart-qty-value"
+                      data-dish-cart-target="quantity">1</span>
+                <button type="button"
+                        class="btn btn-outline-light btn-sm ms-2"
+                        data-action="click->dish-cart#increment">+</button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

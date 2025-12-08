@@ -18,6 +18,17 @@ en:
       empty: "No restaurants found"
     show:
       back: "Back to restaurants"
+      menu_title: "Menu"
+      all_dishes: "All"
+      empty_menu: "This restaurant has no dishes yet."
+      add_to_cart: "Add to cart"
+      price_with_currency: "%{price} BYN"
+      active_admin:
+        dishes:
+          menu: "Dishes"
+          form:
+            basic_info: "Dish"
+            photo: "Photo"
     delivery:
       minutes: "min"
       free: "Delivery: Free"
