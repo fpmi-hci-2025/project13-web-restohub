@@ -32,8 +32,9 @@ module Restaurants
 
     def base_scope
       scope = Restaurant.active_partners
-
-      scope = scope.where(cuisine_type: category) if category.present?
+      if category.present?
+        scope = scope.where("? = ANY(categories)", category)
+      end
       scope
     end
 
@@ -42,9 +43,7 @@ module Restaurants
         results
       else
         ids = results.records.map(&:id)
-        Restaurant.where(id: ids)
-                  .includes(:dishes)
-                  .order(sort_by => sort_order)
+        Restaurant.where(id: ids).includes(:dishes).order(sort_by => sort_order)
       end
     end
 
@@ -64,7 +63,7 @@ module Restaurants
         must << { match_all: {} }
       end
 
-      filter << { term: { cuisine_type: category } } if category.present?
+      filter << { term: { dish_categories: category } } if category.present?
 
       {
         query: {

@@ -17,7 +17,9 @@ module SearchableForRestaurants
         indexes :address,            type: :text,  analyzer: 'standard'
         indexes :rating,             type: :float
         indexes :partnership_status, type: :keyword
+
         indexes :dish_categories,    type: :keyword
+
         indexes :dish_names,         type: :text,  analyzer: 'standard'
       end
     end
@@ -40,7 +42,7 @@ module SearchableForRestaurants
   end
 
   def dish_categories
-    dishes.available.distinct.pluck(:category).compact
+    ui_categories
   end
 
   def dish_names

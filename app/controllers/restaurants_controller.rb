@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class RestaurantsController < ApplicationController
-
-  CATEGORIES = %w[Pizza Sushi Burgers Salads].freeze
+  CATEGORIES = Restaurant::CATEGORIES
 
   def index
     @dish_categories = CATEGORIES

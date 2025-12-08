@@ -18,11 +18,10 @@ en:
       empty: "No restaurants found"
     show:
       back: "Back to restaurants"
-      address: "Address"
     delivery:
       minutes: "min"
       free: "Delivery: Free"
-      paid: "Delivery: %{price}"
+      paid: "Delivery: %{price} BYN"
     categories:
       pizza: "Pizza"
       sushi: "Sushi"

@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_170511) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
+    t.string "categories", default: [], null: false, array: true
     t.string "cuisine_type"
     t.string "address"
     t.decimal "rating", precision: 3, scale: 2, default: "0.0", null: false

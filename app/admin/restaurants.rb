@@ -12,7 +12,8 @@ ActiveAdmin.register Restaurant do
                 :delivery_time_max,
                 :free_delivery,
                 :delivery_price,
-                :photo
+                :photo,
+                categories: []
 
   scope :all, default: true
   scope(I18n.t('active_admin.restaurants.scopes.active'))     { |scope| scope.where(partnership_status: :active) }
@@ -20,13 +21,13 @@ ActiveAdmin.register Restaurant do
   scope(I18n.t('active_admin.restaurants.scopes.terminated')) { |scope| scope.where(partnership_status: :terminated) }
 
   filter :name
-  filter :cuisine_type
   filter :address
   filter :rating
   filter :partnership_status, as: :select, collection: Restaurant.partnership_statuses.keys
   filter :free_delivery
   filter :delivery_price
   filter :created_at
+  filter :categories, as: :check_boxes, collection: Restaurant::CATEGORIES
 
   index do
     selectable_column
@@ -34,12 +35,16 @@ ActiveAdmin.register Restaurant do
 
     column :photo do |restaurant|
       if restaurant.photo.attached?
-        image_tag url_for(restaurant.photo.variant(resize_to_fill: [60, 60])), class: 'rounded'
+        image_tag url_for(restaurant.photo.variant(:thumb)), class: 'rounded'
       end
     end
 
     column :name
-    column :cuisine_type
+
+    column :cuisine_type do |restaurant|
+      restaurant.ui_categories.join(', ').presence || 'Empty'
+    end
+
     column :address
     column :rating
     column :partnership_status
@@ -56,7 +61,11 @@ ActiveAdmin.register Restaurant do
     attributes_table do
       row :id
       row :name
-      row :cuisine_type
+
+      row :cuisine_type do |restaurant|
+        restaurant.ui_categories.join(', ').presence || 'Empty'
+      end
+
       row :address
       row :rating
       row :partnership_status
@@ -69,7 +78,7 @@ ActiveAdmin.register Restaurant do
 
       row :photo do |restaurant|
         if restaurant.photo.attached?
-          image_tag url_for(restaurant.photo.variant(resize_to_limit: [400, 300]))
+          image_tag url_for(restaurant.photo.variant(:card))
         end
       end
     end
@@ -90,7 +99,12 @@ ActiveAdmin.register Restaurant do
 
     f.inputs I18n.t('active_admin.restaurants.form.basic_info') do
       f.input :name
-      f.input :cuisine_type
+
+      f.input :categories,
+              as: :check_boxes,
+              collection: Restaurant::CATEGORIES,
+              input_html: { multiple: true }
+
       f.input :address
       f.input :rating, hint: I18n.t('active_admin.restaurants.hints.rating')
       f.input :partnership_status,

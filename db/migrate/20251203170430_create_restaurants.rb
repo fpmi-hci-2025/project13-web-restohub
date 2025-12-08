@@ -4,7 +4,11 @@ class CreateRestaurants < ActiveRecord::Migration[7.2]
   def change
     create_table :restaurants do |t|
       t.string  :name, null: false
+
+      t.string  :categories, array: true, default: [], null: false
+
       t.string  :cuisine_type
+
       t.string  :address
       t.decimal :rating, precision: 3, scale: 2, null: false, default: 0.0
 

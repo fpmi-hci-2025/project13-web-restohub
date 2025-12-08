@@ -2,11 +2,9 @@
 
 module RestaurantsHelper
   def restaurant_photo_path(restaurant)
-    if restaurant.photo.attached?
-      restaurant.photo.variant(resize_to_fill: [900, 260])
-    else
-      'restaurant_placeholder.jpg'
-    end
+    return restaurant.photo.variant(:card) if restaurant.photo.attached?
+
+    nil
   end
 
   def restaurant_categories_labels(restaurant)
@@ -17,9 +15,11 @@ module RestaurantsHelper
   end
 
   def restaurant_rating_with_star(restaurant)
+    avg = restaurant.average_rating || 0.0
+
     content_tag(:span, class: 'restaurant-rating d-inline-flex align-items-center') do
-      concat content_tag(:i, '', class: 'fa-solid fa-star me-1 text-warning')
-      concat number_with_precision(restaurant.average_rating || 0.0, precision: 1)
+      concat content_tag(:i, '', class: 'bi bi-star-fill restaurant-rating-star me-1')
+      concat avg.round(1).to_s
     end
   end
 end

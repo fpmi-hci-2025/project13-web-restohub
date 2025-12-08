@@ -18,11 +18,10 @@ ru:
       empty: "Рестораны не найдены"
     show:
       back: "Назад к ресторанам"
-      address: "Адрес"
     delivery:
       minutes: "мин"
       free: "Дост.: Бесплатно"
-      paid: "Дост.: %{price} ₽"
+      paid: "Дост.: %{price} BYN"
     categories:
       pizza: "Пицца"
       sushi: "Суши"
