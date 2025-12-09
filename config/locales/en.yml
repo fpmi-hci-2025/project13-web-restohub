@@ -2,6 +2,7 @@ en:
   navigation:
     restaurants: "Restaurants"
     cart: "Cart"
+    profile: "Profile"
 
   pages:
     home:
@@ -58,3 +59,86 @@ en:
       added: "Dish has been added to your cart"
       error: "Couldn't add dish to cart"
       cleared: "Cart has been cleared"
+
+  profile:
+    title: "Profile"
+    edit_title: "Edit profile"
+    edit_button: "Edit"
+    sections:
+      addresses: "Addresses"
+      addresses_subtitle:
+        zero: "No addresses yet"
+        one: "%{count} address saved"
+        other: "%{count} addresses saved"
+      payments: "Payment methods"
+      payments_empty: "No cards added"
+      payments_has_default: "Card %{card}"
+      discounts: "Discounts"
+      discounts_subtitle: "Promocodes and coupons (soon)"
+      help: "Help"
+      help_subtitle: "FAQ and chat (soon)"
+    form:
+      login: "Nickname"
+      avatar: "Avatar"
+      first_name: "First name"
+      last_name: "Last name"
+      back: "Back to profile"
+      save: "Save changes"
+    flash:
+      updated: "Profile updated successfully"
+
+    addresses:
+      title: "Addresses"
+      new_title: "Add new address"
+      edit_title: "Edit address"
+      back_to_profile: "Back to profile"
+      back_to_index: "Back to addresses"
+      delete_all: "Delete all addresses"
+      delete_all_confirm: "Are you sure you want to delete all addresses?"
+      delete_confirm: "Delete this address?"
+      default: "Default"
+      edit: "Edit"
+      delete: "Delete"
+      empty: "You haven't added any addresses yet."
+      form:
+        country: "Country"
+        city: "City"
+        street: "Street"
+        house: "House"
+        building: "Building"
+        entrance: "Entrance"
+        apartment: "Apartment"
+        is_default: "Use as default address"
+        save: "Save address"
+      flash:
+        created: "Address added."
+        updated: "Address updated."
+        deleted: "Address deleted."
+        deleted_all: "All addresses deleted."
+
+    payment_methods:
+      title: "Payment methods"
+      new_title: "Add new card"
+      edit_title: "Edit card"
+      back_to_profile: "Back to profile"
+      back_to_index: "Back to payment methods"
+      delete_all: "Delete all cards"
+      delete_all_confirm: "Are you sure you want to delete all cards?"
+      delete_confirm: "Delete this card?"
+      default: "Default"
+      edit: "Edit"
+      delete: "Delete"
+      empty: "You haven't added any cards yet."
+      form:
+        cardholder_name: "Cardholder name"
+        card_number: "Card number"
+        exp_month: "Expiry month"
+        exp_year: "Expiry year"
+        is_default: "Default card"
+        is_default_short: "Set as default"
+        save: "Save card"
+      flash:
+        created: "Card added."
+        updated: "Card updated."
+        deleted: "Card deleted."
+        deleted_all: "All cards deleted."

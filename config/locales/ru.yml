@@ -2,6 +2,7 @@ ru:
   navigation:
     restaurants: "Рестораны"
     cart: "Корзина"
+    profile: "Профиль"
 
   pages:
     home:
@@ -58,3 +59,88 @@ ru:
       added: "Блюдо добавлено в корзину"
       error: "Не удалось добавить блюдо в корзину"
       cleared: "Корзина очищена"
+
+  profile:
+    title: "Профиль"
+    edit_title: "Редактирование профиля"
+    edit_button: "Редактировать"
+    sections:
+      addresses: "Адреса"
+      addresses_subtitle:
+        zero: "Адреса ещё не добавлены"
+        one: "%{count} адрес сохранён"
+        few: "%{count} адреса сохранено"
+        many: "%{count} адресов сохранено"
+        other: "%{count} адресов сохранено"
+      payments: "Оплата"
+      payments_empty: "Способы оплаты не добавлены"
+      payments_has_default: "Карта %{card}"
+      discounts: "Скидки"
+      discounts_subtitle: "Купоны и промокоды (скоро)"
+      help: "Помощь"
+      help_subtitle: "FAQ и чат (скоро)"
+    form:
+      login: "Никнейм"
+      avatar: "Аватар"
+      first_name: "Имя"
+      last_name: "Фамилия"
+      back: "Назад к профилю"
+      save: "Сохранить изменения"
+    flash:
+      updated: "Профиль успешно обновлён."
+
+    addresses:
+      title: "Адреса"
+      new_title: "Добавить новый адрес"
+      edit_title: "Редактирование адреса"
+      back_to_profile: "Назад к профилю"
+      back_to_index: "Назад к адресам"
+      delete_all: "Удалить все адреса"
+      delete_all_confirm: "Точно удалить все адреса?"
+      delete_confirm: "Удалить этот адрес?"
+      default: "По умолчанию"
+      edit: "Изменить"
+      delete: "Удалить"
+      empty: "Вы ещё не добавили ни одного адреса."
+      form:
+        country: "Страна"
+        city: "Город"
+        street: "Улица"
+        house: "Дом"
+        building: "Корпус"
+        entrance: "Подъезд"
+        apartment: "Квартира"
+        is_default: "Использовать как адрес по умолчанию"
+        save: "Сохранить адрес"
+      flash:
+        created: "Адрес добавлен."
+        updated: "Адрес обновлён."
+        deleted: "Адрес удалён."
+        deleted_all: "Все адреса удалены."
+
+    payment_methods:
+      title: "Способы оплаты"
+      new_title: "Добавить карту"
+      edit_title: "Редактирование карты"
+      back_to_profile: "Назад к профилю"
+      back_to_index: "Назад к способам оплаты"
+      delete_all: "Удалить все карты"
+      delete_all_confirm: "Точно удалить все карты?"
+      delete_confirm: "Удалить эту карту?"
+      default: "По умолчанию"
+      edit: "Изменить"
+      delete: "Удалить"
+      empty: "Вы ещё не добавили ни одной карты."
+      form:
+        cardholder_name: "Держатель карты"
+        card_number: "Номер карты"
+        exp_month: "Месяц окончания"
+        exp_year: "Год окончания"
+        is_default: "Карта по умолчанию"
+        is_default_short: "Сделать основной"
+        save: "Сохранить карту"
+      flash:
+        created: "Карта добавлена."
+        updated: "Карта обновлена."
+        deleted: "Карта удалена."
+        deleted_all: "Все карты удалены."

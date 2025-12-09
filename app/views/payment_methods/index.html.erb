@@ -1,0 +1,62 @@
+<div class="container py-4 text-white payment-methods-page">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0"><%= t('payment_methods.title') %></h2>
+
+    <div>
+      <% if @payment_methods.any? %>
+        <%= button_to t('payment_methods.delete_all'),
+                      destroy_all_payment_methods_path(locale: I18n.locale),
+                      method: :delete,
+                      data: { confirm: t('payment_methods.delete_all_confirm') },
+                      class: "btn btn-outline-danger btn-sm me-2" %>
+      <% end %>
+
+      <%= link_to t('payment_methods.back_to_profile'),
+                  profile_path(locale: I18n.locale),
+                  class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  </div>
+
+  <% if @payment_methods.any? %>
+    <div class="payment-methods-list mb-4">
+      <% @payment_methods.each do |pm| %>
+        <div class="payment-method-card card bg-dark border-0 rounded-4 mb-3 p-3 d-flex flex-row justify-content-between">
+          <div>
+            <div class="fw-semibold">
+              <%= pm.cardholder_name %>
+            </div>
+            <div class="text-white-50">
+              <%= pm.masked_number %> · <%= "%02d" % pm.exp_month %>/<%= pm.exp_year %>
+            </div>
+            <% if pm.is_default? %>
+              <span class="badge bg-warning text-dark">
+                <%= t('payment_methods.default') %>
+              </span>
+            <% end %>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <%= link_to t('payment_methods.edit'),
+                        edit_payment_method_path(pm, locale: I18n.locale),
+                        class: "btn btn-outline-light btn-sm me-2" %>
+
+            <%= button_to t('payment_methods.delete'),
+                          payment_method_path(pm, locale: I18n.locale),
+                          method: :delete,
+                          data: { confirm: t('payment_methods.delete_confirm') },
+                          class: "btn btn-outline-danger btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-white-50 mb-4">
+      <%= t('payment_methods.empty') %>
+    </p>
+  <% end %>
+
+  <div class="card bg-dark border-0 rounded-4 p-4">
+    <h5 class="mb-3"><%= t('payment_methods.new_title') %></h5>
+    <%= render "form", payment_method: @payment_method %>
+  </div>
+</div>

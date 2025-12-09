@@ -17,6 +17,16 @@ Rails.application.routes.draw do
       patch  :update_item
       delete :clear_for_restaurant
     end
+
+    resource :profile, only: %i[show edit update]
+
+    resources :addresses, only: %i[index create edit update destroy] do
+      delete :destroy_all, on: :collection
+    end
+
+    resources :payment_methods, only: %i[index create edit update destroy] do
+      delete :destroy_all, on: :collection
+    end
   end
 
   ActiveAdmin.routes(self)

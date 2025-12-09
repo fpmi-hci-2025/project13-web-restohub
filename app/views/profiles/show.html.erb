@@ -1,0 +1,101 @@
+<div class="container py-4 text-white profile-page">
+  <div class="d-flex justify-content-center mb-4">
+    <h2 class="profile-title text-center mb-0">
+      <%= t('profile.title') %>
+    </h2>
+  </div>
+
+  <div class="profile-header-card card bg-dark border-0 rounded-4 mb-4">
+    <div class="card-body d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <div class="profile-avatar-lg me-3">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(resize_to_fill: [64, 64]),
+                          class: "profile-avatar-image" %>
+          <% else %>
+            <span class="profile-avatar-initials">
+              <%= current_user.display_name.first&.upcase || 'U' %>
+            </span>
+          <% end %>
+        </div>
+
+        <div>
+          <div class="fw-semibold fs-5"><%= current_user.display_name %></div>
+          <div class="text-white-50"><%= current_user.email %></div>
+        </div>
+      </div>
+
+      <%= link_to edit_profile_path(locale: I18n.locale),
+                  class: "btn btn-outline-light btn-sm profile-edit-btn" do %>
+        <i class="bi bi-pencil me-1"></i>
+        <%= t('profile.edit_button') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="profile-menu-grid">
+    <%= link_to addresses_path(locale: I18n.locale),
+                class: "profile-menu-card" do %>
+      <div>
+        <div class="profile-menu-title">
+          <%= t('profile.sections.addresses') %>
+        </div>
+        <div class="profile-menu-subtitle text-white-50">
+          <%= t('profile.sections.addresses_subtitle',
+                count: @addresses_count) %>
+        </div>
+      </div>
+      <div class="profile-menu-icon">
+        <i class="bi bi-geo-alt"></i>
+      </div>
+    <% end %>
+
+    <%= link_to payment_methods_path(locale: I18n.locale),
+                class: "profile-menu-card" do %>
+      <div>
+        <div class="profile-menu-title">
+          <%= t('profile.sections.payments') %>
+        </div>
+        <div class="profile-menu-subtitle text-white-50">
+          <% if @default_payment.present? %>
+            <%= t('profile.sections.payments_has_default',
+                  card: @default_payment.masked_number) %>
+          <% else %>
+            <%= t('profile.sections.payments_empty') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="profile-menu-icon">
+        <i class="bi bi-credit-card-2-front"></i>
+      </div>
+    <% end %>
+
+    <div class="profile-menu-card profile-menu-card-disabled">
+      <div>
+        <div class="profile-menu-title">
+          <%= t('profile.sections.discounts') %>
+        </div>
+        <div class="profile-menu-subtitle text-white-50">
+          <%= t('profile.sections.discounts_subtitle') %>
+        </div>
+      </div>
+      <div class="profile-menu-icon">
+        <i class="bi bi-percent"></i>
+      </div>
+    </div>
+
+    <div class="profile-menu-card profile-menu-card-disabled">
+      <div>
+        <div class="profile-menu-title">
+          <%= t('profile.sections.help') %>
+        </div>
+        <div class="profile-menu-subtitle text-white-50">
+          <%= t('profile.sections.help_subtitle') %>
+        </div>
+      </div>
+      <div class="profile-menu-icon">
+        <i class="bi bi-question-circle"></i>
+      </div>
+    </div>
+  </div>
+</div>

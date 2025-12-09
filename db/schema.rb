@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_08_185832) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,22 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_08_185832) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "country", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "house", null: false
+    t.string "building"
+    t.string "entrance"
+    t.string "apartment"
+    t.boolean "is_default", default: false, null: false
+    t.string "address_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id", null: false
     t.bigint "dish_id", null: false
@@ -87,9 +103,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_08_185832) do
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "cardholder_name", null: false
+    t.string "card_number", null: false
+    t.string "last4", null: false
+    t.integer "exp_month", null: false
+    t.integer "exp_year", null: false
+    t.boolean "is_default", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_payment_methods_on_user_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
-    t.string "categories", default: [], null: false, array: true
     t.string "cuisine_type"
     t.string "address"
     t.decimal "rating", precision: 3, scale: 2, default: "0.0", null: false
@@ -146,10 +174,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_08_185832) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "dishes"
   add_foreign_key "carts", "users"
   add_foreign_key "dishes", "restaurants"
+  add_foreign_key "payment_methods", "users"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"
 end

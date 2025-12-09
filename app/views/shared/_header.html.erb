@@ -41,6 +41,22 @@
                     new_user_registration_path,
                     class: "btn btn-outline-light" %>
       <% end %>
+
+      <%= link_to profile_path(locale: I18n.locale),
+                  class: "navbar-avatar-link ms-3" do %>
+        <div class="navbar-avatar-circle">
+          <% if user_signed_in? && current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(resize_to_fill: [32, 32]),
+                          class: "navbar-avatar-image" %>
+          <% elsif user_signed_in? %>
+            <span class="navbar-avatar-initials">
+              <%= (current_user.display_name || '').first&.upcase || 'U' %>
+            </span>
+          <% else %>
+            <i class="bi bi-person navbar-avatar-icon"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>

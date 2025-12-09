@@ -1,0 +1,45 @@
+<%= form_with model: payment_method,
+              url: payment_method.persisted? ? payment_method_path(payment_method, locale: I18n.locale) :
+                     payment_methods_path(locale: I18n.locale),
+              method: payment_method.persisted? ? :patch : :post,
+              local: true do |f| %>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= f.label :cardholder_name, t('payment_methods.form.cardholder_name'), class: "form-label" %>
+      <%= f.text_field :cardholder_name, class: "form-control bg-dark text-white border-secondary" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :card_number, t('payment_methods.form.card_number'), class: "form-label" %>
+      <%= f.text_field :card_number, class: "form-control bg-dark text-white border-secondary", autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <%= f.label :exp_month, t('payment_methods.form.exp_month'), class: "form-label" %>
+      <%= f.number_field :exp_month, in: 1..12, class: "form-control bg-dark text-white border-secondary" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :exp_year, t('payment_methods.form.exp_year'), class: "form-label" %>
+      <%= f.number_field :exp_year, class: "form-control bg-dark text-white border-secondary" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :is_default, t('payment_methods.form.is_default'), class: "form-label d-block" %>
+      <div class="form-check mt-2">
+        <%= f.check_box :is_default,
+                        class: "form-check-input",
+                        id: "payment_method_is_default_#{payment_method.object_id}" %>
+        <%= f.label :is_default,
+                    t('payment_methods.form.is_default_short'),
+                    class: "form-check-label",
+                    for: "payment_method_is_default_#{payment_method.object_id}" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <%= f.submit t('payment_methods.form.save'),
+                 class: "btn btn-orange px-4" %>
+  </div>
+<% end %>

@@ -35,3 +35,31 @@
   background-color: #ffffff;
   color: #000000;
 }
+
+.navbar-avatar-link {
+  text-decoration: none;
+}
+
+.navbar-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.navbar-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-avatar-initials,
+.navbar-avatar-icon {
+  color: #000;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

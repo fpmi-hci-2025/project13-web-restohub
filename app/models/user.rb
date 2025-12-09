@@ -8,9 +8,16 @@ class User < ApplicationRecord
   include UserLogin
   include UserValidations
 
-  has_one :cart, dependent: :destroy
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_fill: [64, 64]
+  end
+
+  has_one  :cart, dependent: :destroy
+  has_many :addresses,       dependent: :destroy
+  has_many :payment_methods, dependent: :destroy
 
   enum :status, { active: 0, blocked: 1 }
+
 
   after_create :assign_default_role
 
@@ -36,6 +43,10 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def display_name
+    nickname.presence || full_name.presence || email
   end
 
   private
