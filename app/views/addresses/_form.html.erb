@@ -7,34 +7,48 @@
   <div class="row mb-3">
     <div class="col-md-4">
       <%= f.label :country, t('addresses.form.country'), class: "form-label" %>
-      <%= f.text_field :country, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :country,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.country_placeholder') %>
     </div>
     <div class="col-md-4">
       <%= f.label :city, t('addresses.form.city'), class: "form-label" %>
-      <%= f.text_field :city, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :city,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.city_placeholder') %>
     </div>
     <div class="col-md-4">
       <%= f.label :street, t('addresses.form.street'), class: "form-label" %>
-      <%= f.text_field :street, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :street,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.street_placeholder') %>
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col-md-3">
       <%= f.label :house, t('addresses.form.house'), class: "form-label" %>
-      <%= f.text_field :house, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :house,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.house_placeholder') %>
     </div>
     <div class="col-md-3">
       <%= f.label :building, t('addresses.form.building'), class: "form-label" %>
-      <%= f.text_field :building, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :building,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.building_placeholder') %>
     </div>
     <div class="col-md-3">
       <%= f.label :entrance, t('addresses.form.entrance'), class: "form-label" %>
-      <%= f.text_field :entrance, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :entrance,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.entrance_placeholder') %>
     </div>
     <div class="col-md-3">
       <%= f.label :apartment, t('addresses.form.apartment'), class: "form-label" %>
-      <%= f.text_field :apartment, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :apartment,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('addresses.form.apartment_placeholder') %>
     </div>
   </div>
 

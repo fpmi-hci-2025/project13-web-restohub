@@ -1,16 +1,20 @@
 <div class="container py-4 text-white addresses-page">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0"><%= t('addresses.title') %></h2>
-
+  <div class="d-flex align-items-center justify-content-between mb-4">
     <div>
       <% if @addresses.any? %>
         <%= button_to t('addresses.delete_all'),
                       destroy_all_addresses_path(locale: I18n.locale),
                       method: :delete,
                       data: { confirm: t('addresses.delete_all_confirm') },
-                      class: "btn btn-outline-danger btn-sm me-2" %>
+                      class: "btn btn-outline-danger btn-sm" %>
       <% end %>
+    </div>
 
+    <h2 class="mb-0 text-center flex-grow-1">
+      <%= t('addresses.title') %>
+    </h2>
+
+    <div class="text-end">
       <%= link_to t('addresses.back_to_profile'),
                   profile_path(locale: I18n.locale),
                   class: "btn btn-outline-secondary btn-sm" %>
@@ -22,11 +26,11 @@
       <% @addresses.each do |address| %>
         <div class="address-card card bg-dark border-0 rounded-4 mb-3 p-3 d-flex flex-row justify-content-between">
           <div>
-            <div class="fw-semibold">
+            <div class="address-text">
               <%= address.full_address %>
             </div>
             <% if address.is_default? %>
-              <span class="badge bg-warning text-dark">
+              <span class="badge bg-warning text-dark mt-1">
                 <%= t('addresses.default') %>
               </span>
             <% end %>
@@ -52,7 +56,7 @@
     </p>
   <% end %>
 
-  <div class="card bg-dark border-0 rounded-4 p-4">
+  <div class="card bg-dark border-0 rounded-4 p-4" id="new-address">
     <h5 class="mb-3"><%= t('addresses.new_title') %></h5>
     <%= render "form", address: @address %>
   </div>

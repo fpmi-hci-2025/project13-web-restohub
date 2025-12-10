@@ -14,7 +14,9 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <%= f.label :login, t('profile.form.login'), class: "form-label" %>
-          <%= f.text_field :login, class: "form-control bg-dark text-white border-secondary" %>
+          <%= f.text_field :login,
+                           class: "form-control bg-dark text-white border-secondary",
+                           placeholder: t('profile.form.login_placeholder') %>
         </div>
         <div class="col-md-6">
           <%= f.label :avatar, t('profile.form.avatar'), class: "form-label" %>
@@ -25,11 +27,15 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <%= f.label :first_name, t('profile.form.first_name'), class: "form-label" %>
-          <%= f.text_field :first_name, class: "form-control bg-dark text-white border-secondary" %>
+          <%= f.text_field :first_name,
+                           class: "form-control bg-dark text-white border-secondary",
+                           placeholder: t('profile.form.first_name_placeholder') %>
         </div>
         <div class="col-md-6">
           <%= f.label :last_name, t('profile.form.last_name'), class: "form-label" %>
-          <%= f.text_field :last_name, class: "form-control bg-dark text-white border-secondary" %>
+          <%= f.text_field :last_name,
+                           class: "form-control bg-dark text-white border-secondary",
+                           placeholder: t('profile.form.last_name_placeholder') %>
         </div>
       </div>
 

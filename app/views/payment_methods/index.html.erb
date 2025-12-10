@@ -1,16 +1,20 @@
 <div class="container py-4 text-white payment-methods-page">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0"><%= t('payment_methods.title') %></h2>
-
+  <div class="d-flex align-items-center justify-content-between mb-4">
     <div>
       <% if @payment_methods.any? %>
         <%= button_to t('payment_methods.delete_all'),
                       destroy_all_payment_methods_path(locale: I18n.locale),
                       method: :delete,
                       data: { confirm: t('payment_methods.delete_all_confirm') },
-                      class: "btn btn-outline-danger btn-sm me-2" %>
+                      class: "btn btn-outline-danger btn-sm" %>
       <% end %>
+    </div>
 
+    <h2 class="mb-0 text-center flex-grow-1">
+      <%= t('payment_methods.title') %>
+    </h2>
+
+    <div class="text-end">
       <%= link_to t('payment_methods.back_to_profile'),
                   profile_path(locale: I18n.locale),
                   class: "btn btn-outline-secondary btn-sm" %>

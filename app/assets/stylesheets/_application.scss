@@ -27,3 +27,43 @@ main {
 .min-vh-75 {
   min-height: 75vh;
 }
+
+.profile-page .form-label,
+.addresses-page .form-label,
+.payment-methods-page .form-label {
+  color: #fff;
+}
+
+.profile-page .form-check-label,
+.addresses-page .form-check-label,
+.payment-methods-page .form-check-label {
+  color: #fff;
+}
+
+.btn-orange {
+  background-color: #f49c2f;
+  border-color: #f49c2f;
+  color: #000;
+}
+
+.btn-orange:hover {
+  background-color: #e38f25;
+  border-color: #e38f25;
+  color: #000;
+}
+
+.form-control::placeholder {
+  color: #c8c8c8 !important;
+  opacity: 1;
+}
+
+input.bg-dark::placeholder,
+textarea.bg-dark::placeholder {
+  color: #c8c8c8 !important;
+  opacity: 1;
+}
+
+.addresses-page .address-text {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}

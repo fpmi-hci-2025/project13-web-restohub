@@ -7,22 +7,32 @@
   <div class="row mb-3">
     <div class="col-md-6">
       <%= f.label :cardholder_name, t('payment_methods.form.cardholder_name'), class: "form-label" %>
-      <%= f.text_field :cardholder_name, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.text_field :cardholder_name,
+                       class: "form-control bg-dark text-white border-secondary",
+                       placeholder: t('payment_methods.form.cardholder_name_placeholder') %>
     </div>
     <div class="col-md-6">
       <%= f.label :card_number, t('payment_methods.form.card_number'), class: "form-label" %>
-      <%= f.text_field :card_number, class: "form-control bg-dark text-white border-secondary", autocomplete: "off" %>
+      <%= f.text_field :card_number,
+                       class: "form-control bg-dark text-white border-secondary",
+                       autocomplete: "off",
+                       placeholder: t('payment_methods.form.card_number_placeholder') %>
     </div>
   </div>
 
   <div class="row mb-3">
     <div class="col-md-3">
       <%= f.label :exp_month, t('payment_methods.form.exp_month'), class: "form-label" %>
-      <%= f.number_field :exp_month, in: 1..12, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.number_field :exp_month,
+                         in: 1..12,
+                         class: "form-control bg-dark text-white border-secondary",
+                         placeholder: t('payment_methods.form.exp_month_placeholder') %>
     </div>
     <div class="col-md-3">
       <%= f.label :exp_year, t('payment_methods.form.exp_year'), class: "form-label" %>
-      <%= f.number_field :exp_year, class: "form-control bg-dark text-white border-secondary" %>
+      <%= f.number_field :exp_year,
+                         class: "form-control bg-dark text-white border-secondary",
+                         placeholder: t('payment_methods.form.exp_year_placeholder') %>
     </div>
     <div class="col-md-3">
       <%= f.label :is_default, t('payment_methods.form.is_default'), class: "form-label d-block" %>
