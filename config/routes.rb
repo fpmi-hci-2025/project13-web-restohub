@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
 
     resource :profile, only: %i[show edit update]
+    resources :orders, only: %i[index show new create]
 
     resources :addresses, only: %i[index create edit update destroy] do
       delete :destroy_all, on: :collection

@@ -6,11 +6,12 @@ class Restaurant < ApplicationRecord
   CATEGORIES = %w[Pizza Sushi Burgers Salads].freeze
 
   has_one_attached :photo do |attachable|
-    attachable.variant :card,  resize_to_fill: [1500, 260]
+    attachable.variant :card,  resize_to_fill: [200, 200]
     attachable.variant :thumb, resize_to_fill: [60, 60]
   end
 
   has_many :dishes, dependent: :destroy
+  has_many :orders, dependent: :nullify
 
   enum partnership_status: { active: 0, paused: 1, terminated: 2 }
 

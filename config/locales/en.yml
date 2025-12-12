@@ -215,3 +215,46 @@ en:
       card_number_placeholder: "4242 4242 4242 4242"
       exp_month_placeholder: "12"
       exp_year_placeholder: "2030"
+
+  orders:
+    index:
+      title: "My orders"
+      order_number: "Order #%{number}"
+      summary: "%{items} items · € %{amount}"
+    empty_title: "You have no orders yet"
+    empty_subtitle: "Go to the home page and place your first order."
+    checkout:
+      title: "Checkout"
+      back_to_cart: "Back to cart"
+      address_label: "Delivery address"
+      no_addresses: "You have no saved addresses. Add one in your profile."
+      payment_label: "Payment"
+      payment_card: "Card"
+      payment_cash: "Cash"
+      default_card_hint: "Default card: %{card}"
+      comment_label: "Comment for courier"
+      comment_placeholder: "For example: call me 5 minutes before arrival"
+      to_pay: "To pay"
+      place_order: "Place order"
+      cart_empty: "Your cart for this restaurant is empty."
+    show:
+      title: "Order status"
+      back_to_list: "Back to orders"
+      back_to_home: "Go to home"
+      order_number: "Order #%{number}"
+      eta_label: "Delivery details"
+      eta_value: "ETA: %{eta} · Courier: %{courier} | %{phone}"
+      steps:
+        accepted: "Order accepted"
+        preparing: "Preparing"
+        on_the_way: "On the way"
+        delivered: "Delivered"
+    statuses:
+      pending: "Pending"
+      accepted: "Accepted"
+      preparing: "Preparing"
+      on_the_way: "On the way"
+      delivered: "Delivered"
+      cancelled: "Cancelled"
+    flash:
+      created: "Order has been placed."

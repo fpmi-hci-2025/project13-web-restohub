@@ -36,3 +36,16 @@ en:
       form:
         basic_info: "Dish"
         photo: "Dish photo"
+
+    orders:
+      menu: "Orders"
+      items_panel: "Order items"
+      payments_panel: "Payments"
+      scopes:
+        statuses:
+          pending: "Pending"
+          accepted: "Accepted"
+          preparing: "Preparing"
+          on_the_way: "On the way"
+          delivered: "Delivered"
+          cancelled: "Cancelled"

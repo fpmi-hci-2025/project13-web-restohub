@@ -45,13 +45,27 @@
 }
 
 .restaurant-card-photo-wrapper {
-  height: 180px;
+  position: relative;
+  width: 100%;
+  padding-top: 110%; // квадрат 1:1
   overflow: hidden;
 }
 
 .restaurant-card-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 110%;
   object-fit: cover;
-  max-height: 260px;
+  display: block;
+}
+
+.restaurant-card-photo-placeholder {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background: linear-gradient(135deg, #333333, #555555);
 }
 
 .restaurant-card-body {

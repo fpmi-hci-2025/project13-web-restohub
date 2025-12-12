@@ -216,3 +216,46 @@ ru:
       card_number_placeholder: "4242 4242 4242 4242"
       exp_month_placeholder: "12"
       exp_year_placeholder: "2030"
+
+  orders:
+    index:
+      title: "Мои заказы"
+      order_number: "Заказ №%{number}"
+      summary: "%{items} поз. · € %{amount}"
+    empty_title: "Заказов пока нет"
+    empty_subtitle: "Перейдите на главную и оформите первый заказ."
+    checkout:
+      title: "Оформление заказа"
+      back_to_cart: "Назад в корзину"
+      address_label: "Адрес доставки"
+      no_addresses: "У вас ещё нет сохранённых адресов. Добавьте адрес в профиле."
+      payment_label: "Оплата"
+      payment_card: "Карта"
+      payment_cash: "Наличные"
+      default_card_hint: "Карта по умолчанию: %{card}"
+      comment_label: "Комментарий курьеру"
+      comment_placeholder: "Например: позвоните за 5 минут до прибытия"
+      to_pay: "К оплате"
+      place_order: "Заказать"
+      cart_empty: "Корзина для этого ресторана пуста."
+    show:
+      title: "Статус заказа"
+      back_to_list: "К списку заказов"
+      back_to_home: "На главную"
+      order_number: "Заказ №%{number}"
+      eta_label: "Информация о доставке"
+      eta_value: "ETA: %{eta} · Курьер: %{courier} | %{phone}"
+      steps:
+        accepted: "Заказ принят"
+        preparing: "Готовится"
+        on_the_way: "В пути"
+        delivered: "Доставлен"
+    statuses:
+      pending: "Ожидает подтверждения"
+      accepted: "Принят"
+      preparing: "Готовится"
+      on_the_way: "В пути"
+      delivered: "Доставлен"
+      cancelled: "Отменён"
+    flash:
+      created: "Заказ оформлен."

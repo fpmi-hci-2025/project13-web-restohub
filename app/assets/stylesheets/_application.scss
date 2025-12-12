@@ -67,3 +67,40 @@ textarea.bg-dark::placeholder {
   color: #e0e0e0;
   font-size: 0.95rem;
 }
+
+.orders-page .form-label {
+  color: #cccccc;
+}
+
+.orders-page .order-card {
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.orders-page .order-card:hover {
+  background-color: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.orders-empty-icon {
+  font-size: 3rem;
+}
+
+.text-orange {
+  color: #f49c2f !important;
+}
+
+/* переключатель оплаты Card / Cash:
+   по умолчанию — ярко-оранжевая заливка,
+   активная кнопка — белая с чёрным текстом */
+.btn-payment-toggle {
+  border-radius: 999px;
+  background-color: #f49c2f;
+  border-color: #f49c2f;
+  color: #000;
+}
+
+.btn-payment-toggle.active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #000;
+}

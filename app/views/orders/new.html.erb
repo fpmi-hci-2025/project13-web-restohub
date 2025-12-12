@@ -1,0 +1,142 @@
+<div class="container py-4 text-white orders-page">
+  <!-- Заголовок по центру + кнопка Back to cart справа -->
+  <div class="mb-4 position-relative">
+    <h2 class="mb-0 text-center"><%= t('orders.checkout.title') %></h2>
+
+    <div class="position-absolute top-0 end-0">
+      <%= link_to t('orders.checkout.back_to_cart'),
+                  cart_path(locale: I18n.locale, restaurant_id: @restaurant.id),
+                  class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  </div>
+
+  <div class="card bg-dark border-0 rounded-4 p-4 mb-3">
+    <h5 class="mb-3 text-white"><%= @restaurant.name %></h5>
+
+    <%= form_with model: @order,
+                  url: orders_path(locale: I18n.locale),
+                  local: true do |f| %>
+
+      <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+      <%= f.hidden_field :order_type, value: @order.order_type || :delivery %>
+
+      <!-- Адрес доставки -->
+      <div class="mb-3">
+        <label class="form-label text-white-50">
+          <%= t('orders.checkout.address_label') %>
+        </label>
+        <% if @addresses.any? %>
+          <%= f.collection_select :address_id,
+                                  @addresses,
+                                  :id,
+                                  :full_address,
+                                  { selected: @default_address&.id },
+                                  class: "form-select bg-dark text-white border-secondary" %>
+        <% else %>
+          <p class="text-white-50 mb-0">
+            <%= t('orders.checkout.no_addresses') %>
+          </p>
+        <% end %>
+      </div>
+
+      <!-- Оплата -->
+      <div class="mb-3">
+        <label class="form-label text-white-50">
+          <%= t('orders.checkout.payment_label') %>
+        </label>
+
+        <div class="btn-group w-100 mb-2" role="group" aria-label="Payment method">
+          <input type="radio"
+                 class="btn-check"
+                 name="order[payment_method]"
+                 id="order_payment_card"
+                 value="card"
+                 autocomplete="off"
+                 checked>
+          <label class="btn btn-payment-toggle flex-fill active" for="order_payment_card">
+            <%= t('orders.checkout.payment_card') %>
+          </label>
+
+          <input type="radio"
+                 class="btn-check"
+                 name="order[payment_method]"
+                 id="order_payment_cash"
+                 value="cash"
+                 autocomplete="off">
+          <label class="btn btn-payment-toggle flex-fill" for="order_payment_cash">
+            <%= t('orders.checkout.payment_cash') %>
+          </label>
+        </div>
+
+        <% if @default_payment.present? %>
+          <p id="default-card-hint" class="text-white-50 mb-0">
+            <%= t('orders.checkout.default_card_hint',
+                  card: @default_payment.masked_number) %>
+          </p>
+        <% end %>
+      </div>
+
+      <!-- Комментарий курьеру -->
+      <div class="mb-3">
+        <%= f.label :comment,
+                    t('orders.checkout.comment_label'),
+                    class: "form-label text-white-50" %>
+        <%= f.text_area :comment,
+                        rows: 3,
+                        class: "form-control bg-dark text-white border-secondary",
+                        placeholder: t('orders.checkout.comment_placeholder') %>
+      </div>
+
+      <!-- Итого -->
+      <div class="border-top pt-3 mt-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="fw-semibold text-white-50">
+            <%= t('orders.checkout.to_pay') %>
+          </span>
+          <span class="fw-semibold">
+            <%= t('restaurants.show.price_with_currency',
+                  price: number_with_precision(
+                    @items.sum { |i| i.dish.price * i.quantity },
+                    precision: 2,
+                    strip_insignificant_zeros: true
+                  )) %>
+          </span>
+        </div>
+
+        <div class="d-flex">
+          <%= f.submit t('orders.checkout.place_order'),
+                       class: "btn btn-orange w-100" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Небольшой JS: переключаем активную кнопку и прячем/показываем дефолтную карту -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cardRadio   = document.getElementById("order_payment_card");
+        const cashRadio   = document.getElementById("order_payment_cash");
+        const cardLabel   = document.querySelector("label[for='order_payment_card']");
+        const cashLabel   = document.querySelector("label[for='order_payment_cash']");
+        const defaultHint = document.getElementById("default-card-hint");
+
+        if (!cardRadio || !cashRadio || !cardLabel || !cashLabel) return;
+
+        function refreshPaymentUI() {
+            const cardSelected = cardRadio.checked;
+
+            cardLabel.classList.toggle("active", cardSelected);
+            cashLabel.classList.toggle("active", !cardSelected);
+
+            if (defaultHint) {
+                defaultHint.classList.toggle("d-none", !cardSelected); // при Cash прячем
+            }
+        }
+
+        cardRadio.addEventListener("change", refreshPaymentUI);
+        cashRadio.addEventListener("change", refreshPaymentUI);
+
+        refreshPaymentUI();
+    });
+</script>

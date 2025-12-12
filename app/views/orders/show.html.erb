@@ -1,0 +1,61 @@
+<div class="container py-4 text-white orders-page">
+  <div class="mb-4 position-relative">
+    <h2 class="mb-0 text-center"><%= t('orders.show.title') %></h2>
+
+    <div class="position-absolute top-0 end-0">
+      <%= link_to t('orders.show.back_to_list'),
+                  orders_path(locale: I18n.locale),
+                  class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  </div>
+
+  <div class="card bg-dark border-0 rounded-4 p-4 mb-3">
+    <div class="mb-2 text-white-50">
+      <%= t('orders.show.order_number', number: @order.order_number) %>
+    </div>
+
+    <div class="mb-3 text-white-50">
+      <strong><%= @order.restaurant.name %></strong>
+    </div>
+
+    <ul class="list-unstyled mb-4">
+      <% steps = %i[accepted preparing on_the_way delivered] %>
+      <% steps.each do |step|
+        done = (Order.statuses[@order.status] || 0) >= (Order.statuses[step] || 0)
+      %>
+        <li class="d-flex align-items-center mb-2">
+          <span class="me-2">
+            <% if done %>
+              <i class="bi bi-check-circle-fill text-orange"></i>
+            <% else %>
+              <i class="bi bi-circle text-white-50"></i>
+            <% end %>
+          </span>
+          <span class="<%= done ? 'text-white' : 'text-white-50' %>">
+            <%= t("orders.show.steps.#{step}") %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if @order.delivery.present? %>
+      <div class="mb-3 p-3 rounded-4 bg-black bg-opacity-25">
+        <div class="text-white-50 mb-1">
+          <%= t('orders.show.eta_label') %>
+        </div>
+        <div class="text-white-50">
+          <%= t('orders.show.eta_value',
+                eta: (@order.delivery.eta_planned&.strftime('%H:%M') || '–'),
+                courier: @order.delivery.courier.full_name,
+                phone: @order.delivery.courier.phone) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="d-flex">
+      <%= link_to t('orders.show.back_to_home'),
+                  restaurants_path(locale: I18n.locale),
+                  class: "btn btn-outline-light w-100" %>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,8 @@ class User < ApplicationRecord
   has_one  :cart, dependent: :destroy
   has_many :addresses,       dependent: :destroy
   has_many :payment_methods, dependent: :destroy
-
+  has_many :orders,          dependent: :nullify
+  has_many :courier_deliveries, class_name: "Delivery", foreign_key: :courier_id, dependent: :nullify
   enum :status, { active: 0, blocked: 1 }
 
 

@@ -36,3 +36,17 @@ ru:
       form:
         basic_info: "Блюдо"
         photo: "Фотография блюда"
+
+    active_admin:
+      orders:
+        menu: "Заказы"
+        items_panel: "Позиции заказа"
+        payments_panel: "Платежи"
+        scopes:
+          statuses:
+            pending: "Ожидает"
+            accepted: "Принят"
+            preparing: "Готовится"
+            on_the_way: "В пути"
+            delivered: "Доставлен"
+            cancelled: "Отменён"

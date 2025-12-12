@@ -1,0 +1,42 @@
+<div class="container py-4 text-white orders-page">
+  <div class="d-flex justify-content-center mb-4">
+    <h2 class="profile-title text-center mb-0">
+      <%= t('orders.index.title') %>
+    </h2>
+  </div>
+
+  <% if @orders.any? %>
+    <div class="orders-list">
+      <% @orders.each do |order| %>
+        <%= link_to order_path(order, locale: I18n.locale),
+                    class: "order-card card bg-dark border-0 rounded-4 mb-3 p-3 text-decoration-none text-white" do %>
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="fw-semibold">
+              <%= t('orders.index.order_number', number: order.order_number) %>
+            </span>
+            <span class="text-white-50">
+              <%= t("orders.statuses.#{order.status}") %>
+            </span>
+          </div>
+          <div class="text-white-50">
+            <%= t('orders.index.summary',
+                  items: order.order_items.sum(&:quantity),
+                  amount: number_with_precision(order.total_amount,
+                                                precision: 2,
+                                                strip_insignificant_zeros: true)) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="orders-empty-state d-flex flex-column align-items-center justify-content-center py-5">
+      <i class="bi bi-receipt orders-empty-icon mb-3"></i>
+      <p class="orders-empty-title text-white mb-2">
+        <%= t('orders.empty_title') %>
+      </p>
+      <p class="orders-empty-subtitle text-white-50 mb-0">
+        <%= t('orders.empty_subtitle') %>
+      </p>
+    </div>
+  <% end %>
+</div>

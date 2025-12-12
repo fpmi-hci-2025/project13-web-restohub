@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_10_105959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "deliveries", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "courier_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "eta_planned"
+    t.datetime "eta_actual"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["courier_id"], name: "index_deliveries_on_courier_id"
+    t.index ["order_id"], name: "index_deliveries_on_order_id", unique: true
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
     t.string "name", null: false
@@ -101,6 +113,36 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "dish_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.decimal "item_price", precision: 8, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_order_items_on_dish_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "order_number", null: false
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.bigint "address_id"
+    t.integer "order_type", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.decimal "total_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "payment_status", default: 0, null: false
+    t.decimal "risk_score", precision: 5, scale: 2, default: "0.0", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["order_number"], name: "index_orders_on_order_number", unique: true
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -116,8 +158,21 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
     t.index ["user_id"], name: "index_payment_methods_on_user_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "provider"
+    t.string "method_type"
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "paid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false
+    t.string "categories", default: [], null: false, array: true
     t.string "cuisine_type"
     t.string "address"
     t.decimal "rating", precision: 3, scale: 2, default: "0.0", null: false
@@ -178,8 +233,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_09_101621) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "dishes"
   add_foreign_key "carts", "users"
+  add_foreign_key "deliveries", "orders"
+  add_foreign_key "deliveries", "users", column: "courier_id"
   add_foreign_key "dishes", "restaurants"
+  add_foreign_key "order_items", "dishes"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "restaurants"
+  add_foreign_key "orders", "users"
   add_foreign_key "payment_methods", "users"
+  add_foreign_key "payments", "orders"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"
 end

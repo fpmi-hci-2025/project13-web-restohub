@@ -1,13 +1,15 @@
-<div class="card restaurant-card mb-3 shadow-sm">
-  <%= image_tag restaurant_photo_path(restaurant),
-                class: "card-img-top restaurant-card-img" %>
+<div class="card restaurant-card mb-3 bg-dark text-white border-0 shadow-sm">
+  <div class="restaurant-card-photo-wrapper">
+    <%= image_tag restaurant_photo_path(restaurant),
+                  class: "restaurant-card-photo" %>
+  </div>
 
-  <div class="card-body bg-light">
+  <div class="card-body restaurant-card-body">
     <div class="d-flex justify-content-between align-items-center mb-1">
       <h5 class="restaurant-card-title mb-0">
         <%= link_to restaurant.name,
                     restaurant_path(restaurant, locale: I18n.locale),
-                    class: "text-decoration-none text-dark" %>
+                    class: "restaurant-card-title-link" %>
       </h5>
 
       <div>
@@ -15,7 +17,7 @@
       </div>
     </div>
 
-    <div class="restaurant-card-meta mb-1">
+    <p class="restaurant-card-meta mb-1">
       <% if restaurant.delivery_time_label.present? %>
         <span><%= restaurant.delivery_time_label %></span>
       <% end %>
@@ -25,10 +27,10 @@
       <% if restaurant.delivery_price_label.present? %>
         <span><%= restaurant.delivery_price_label %></span>
       <% end %>
-    </div>
+    </p>
 
-    <div class="restaurant-card-categories">
+    <p class="restaurant-card-categories mb-0">
       <%= restaurant_categories_labels(restaurant) %>
-    </div>
+    </p>
   </div>
 </div>

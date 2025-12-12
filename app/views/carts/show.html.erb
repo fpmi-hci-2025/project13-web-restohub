@@ -140,11 +140,10 @@
           </p>
 
           <div class="d-flex">
-            <button type="button"
-                    class="btn btn-orange w-100"
-                    disabled>
-              <%= t('cart.next_step') %>
-            </button>
+            <%= link_to t('cart.next_step'),
+                        new_order_path(locale: I18n.locale,
+                                       restaurant_id: @current_restaurant.id),
+                        class: "btn btn-orange w-100 text-center" %>
           </div>
         </div>
       <% end %>

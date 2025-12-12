@@ -5,31 +5,35 @@
                 class: "btn btn-outline-secondary btn-sm" %>
   </div>
 
-  <div class="restaurant-card card bg-dark text-white border-0 mb-3">
-    <div class="restaurant-card-photo-wrapper">
-      <%= image_tag restaurant_photo_path(@restaurant),
-                    class: "restaurant-card-photo w-100" %>
-    </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="restaurant-card card bg-dark text-white border-0 mb-3">
+        <div class="restaurant-card-photo-wrapper">
+          <%= image_tag restaurant_photo_path(@restaurant),
+                        class: "restaurant-card-photo" %>
+        </div>
 
-    <div class="card-body restaurant-card-body">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h2 class="card-title mb-0 restaurant-card-title"><%= @restaurant.name %></h2>
-        <%= restaurant_rating_with_star(@restaurant) %>
+        <div class="card-body restaurant-card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="card-title mb-0 restaurant-card-title"><%= @restaurant.name %></h2>
+            <%= restaurant_rating_with_star(@restaurant) %>
+          </div>
+
+          <p class="card-text restaurant-card-meta mb-1"><%= @restaurant.address %></p>
+
+          <p class="card-text restaurant-card-meta mb-1">
+            <%= @restaurant.delivery_time_label %>
+            <% if @restaurant.delivery_time_label.present? && @restaurant.delivery_price_label.present? %>
+              •
+            <% end %>
+            <%= @restaurant.delivery_price_label %>
+          </p>
+
+          <p class="card-text restaurant-card-categories mb-0">
+            <%= restaurant_categories_labels(@restaurant) %>
+          </p>
+        </div>
       </div>
-
-      <p class="card-text restaurant-card-meta mb-1"><%= @restaurant.address %></p>
-
-      <p class="card-text restaurant-card-meta mb-1">
-        <%= @restaurant.delivery_time_label %>
-        <% if @restaurant.delivery_time_label.present? && @restaurant.delivery_price_label.present? %>
-          •
-        <% end %>
-        <%= @restaurant.delivery_price_label %>
-      </p>
-
-      <p class="card-text restaurant-card-categories mb-0">
-        <%= restaurant_categories_labels(@restaurant) %>
-      </p>
     </div>
   </div>
 
@@ -82,16 +86,15 @@
             </div>
 
             <div class="dish-card-actions d-flex align-items-center ms-3">
-            <span class="dish-card-price me-3">
-              <%= t('restaurants.show.price_with_currency',
-                    price: number_with_precision(
-                      dish.price,
-                      precision: 2,
-                      strip_insignificant_zeros: true
-                    )) %>
-            </span>
+              <span class="dish-card-price me-3">
+                <%= t('restaurants.show.price_with_currency',
+                      price: number_with_precision(
+                        dish.price,
+                        precision: 2,
+                        strip_insignificant_zeros: true
+                      )) %>
+              </span>
 
-              <!-- Кнопка добавляет в корзину через Stimulus + fetch -->
               <button type="button"
                       class="btn btn-orange"
                       data-dish-cart-target="addButton"
