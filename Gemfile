@@ -103,7 +103,7 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
 
   # [https://rubygems.org/gems/faker/versions/3.4.2]
-  gem 'faker', '~> 3.4', '>= 3.4.2'
+  gem 'faker', '~> 3.5'
 end
 
 group :development do
