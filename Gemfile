@@ -97,7 +97,7 @@ group :development, :test do
   gem 'webdrivers'
 
   # [https://github.com/rspec/rspec-rails/tree/6-1-maintenance]
-  gem 'rspec-rails', '~> 6.1.0'
+  gem 'rspec-rails', '~> 8.0.2'
 
   # [https://rubygems.org/gems/pry/versions/0.14.1]
   gem 'pry', '~> 0.14.1'
