@@ -254,7 +254,8 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     method_source (1.1.0)
-    mini_magick (4.13.2)
+    mini_magick (5.3.1)
+      logger
     mini_mime (1.1.5)
     minitest (5.26.2)
     msgpack (1.8.0)
@@ -535,7 +536,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari (~> 1.2.2)
-  mini_magick (~> 4.9)
+  mini_magick (~> 5.3)
   pg (~> 1.1)
   pry (~> 0.14.1)
   puma (>= 5.0)
