@@ -66,7 +66,7 @@ gem 'sassc-rails'
 
 gem 'elasticsearch',       '~> 7.17'
 gem 'elasticsearch-model', '~> 7.2'
-gem 'elasticsearch-rails', '~> 7.2'
+gem 'elasticsearch-rails', '~> 8.0'
 
 # Иконки, которые использует ArcticAdmin
 gem 'font-awesome-rails'
